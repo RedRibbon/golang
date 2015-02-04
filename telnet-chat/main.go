@@ -10,17 +10,27 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	msgchan := make(chan string)
+	go printMessages(msgchan)
+
 	for {
 		conn, err := ln.Accept()
 		if err != nil {
 			log.Println(err)
 			continue
 		}
-		go handleConnection(conn)
+		go handleConnection(conn, msgchan)
 	}
 }
 
-func handleConnection(c net.Conn) {
+func printMessages(msgchan <-chan string) {
+	for msg := range msgchan {
+		log.Printf("new message: %s", msg)
+	}
+}
+
+func handleConnection(c net.Conn, msgchan chan<- string) {
 	buf := make([]byte, 4096)
 
 	for {
@@ -29,6 +39,7 @@ func handleConnection(c net.Conn) {
 			c.Close()
 			break
 		}
+		msgchan <- string(buf[0:n])
 		n, err = c.Write(buf[0:n])
 		if err != nil {
 			c.Close()
