@@ -142,4 +142,8 @@ if _, err := strconv.Atoi("non-int"); err != nil {
 }
 ```
 
+## 이것도 알아야 할까?
+
+- [Metaprogramming. The Laws of Reflection](http://blog.golang.org/laws-of-reflection)
+
 # to be continued
