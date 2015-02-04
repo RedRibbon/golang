@@ -4,7 +4,7 @@
 
 ### Declaration
 
-```
+```go
 var foo int // declaration without initialization
 var foo int = 42 // declaration with initialization
 var foo, bar int = 42, 1302 // declare and init multiple vars at once
@@ -16,7 +16,7 @@ const constant = "This is a constant"
 
 ### function
 
-```
+```go
 // a simple function
 func functionName() {}
 
@@ -50,7 +50,7 @@ var x, str = returnMulti2()
 
 ### Functions As Values And Closures
 
-```
+```go
 func main() {
      // assign a function to a name
      add := func(a, b int) int {
@@ -75,7 +75,7 @@ func adder() func(int) int {
 
 ### Loops
 
-```
+```go
 // There's only `for`, no `while`, no `until`
 for i := 1; i < 10; i++ {
 }
@@ -92,7 +92,7 @@ for { // you can omit the condition ~ while (true)
 
 ### controls
 
-```
+```go
 // for 에서처럼 if 에서 := 를 사용하는것은 y에 먼저 값을 대입하고,
 // 그리고 y > x를 검사한다는 의미.
 if y := expensiveComputation(); y > x {
@@ -103,7 +103,7 @@ if y := expensiveComputation(); y > x {
 
 ### defer, panic, recover
 
-```
+```go
 func CopyFile(dstName, srcName string) (written int64, err error) {
      src, err := os.Open(srcName)
      if err != nil {
@@ -127,6 +127,29 @@ func CopyFile(dstName, srcName string) (written int64, err error) {
 
 http://blog.golang.org/defer-panic-and-recover
 
+
+### inheritance
+
+Go doesn’t support inheritance. Instead, it has embedding.
+You can embed an existing data type into a struct type. The struct type then inherits (ha!) all the methods of the embedded type.
+
+```go
+type Foo int
+
+func (f *Foo) Bla() {
+     fmt.Println("called Bla()")
+}
+
+type Bar struct {
+     Foo
+}
+
+func (b *Bar) Whoop() {
+     fmt.Println("called Whoop()")
+}
+```
+
+
 ## 더 볼것
 
 - struct, empty struct, interface, inheritance
@@ -136,7 +159,7 @@ http://blog.golang.org/defer-panic-and-recover
 
 ## good parts
 
-```
+```go
 if _, err := strconv.Atoi("non-int"); err != nil {
     fmt.Println(err)
 }
