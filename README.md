@@ -1,1 +1,1 @@
-# Lat's play ground with Go
+# Let's play ground with Go
