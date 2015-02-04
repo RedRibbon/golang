@@ -126,3 +126,13 @@ func CopyFile(dstName, srcName string) (written int64, err error) {
 3. Deferred functions may read and assign to the returning function's named return values.
 
 http://blog.golang.org/defer-panic-and-recover
+
+## 더 볼것
+
+- struct, empty struct, interface, inheritance
+- defer, panic, recover. excetpion 핸들링은 ???
+- concurrency. go routine은 뭐야
+- channel. another smalltalk ?
+
+
+# to be continued
