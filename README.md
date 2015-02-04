@@ -140,5 +140,6 @@ http://blog.golang.org/defer-panic-and-recover
 if _, err := strconv.Atoi("non-int"); err != nil {
     fmt.Println(err)
 }
+```
 
 # to be continued
