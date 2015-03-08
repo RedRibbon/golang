@@ -31,9 +31,7 @@ func main() {
 		Long:  "Fetch group feeds",
 		Run: func(cmd *cobra.Command, args []string) {
 			token, err := ioutil.ReadFile(tokenFile)
-			if err != nil {
-				panic(err)
-			}
+			checkErr(err, fmt.Sprintf("fail to read token file %v.", tokenFile))
 			fetcher := new(GroupFetcher)
 			fetcher.SetAccessToken(string(token))
 			fetcher.SetDbMap(dbmap)
