@@ -43,7 +43,7 @@ func main() {
 
 	cmdGroup.Flags().StringVarP(&tokenFile, "token", "t", "", "AccessToken file")
 
-	var rootCmd = &cobra.Command{Use: "redribbion"}
+	var rootCmd = &cobra.Command{Use: "facebook-group-fetcher"}
 	rootCmd.AddCommand(cmdGroup)
 	rootCmd.Execute()
 }
