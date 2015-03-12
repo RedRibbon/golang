@@ -256,8 +256,8 @@ func (g *GroupFetcher) insertFeed(feed FBFeed) {
 		Id:        feed.Id,
 		From:      from,
 		Message:   feed.Message,
-		CreatedAt: createdAt.UnixNano(),
-		UpdatedAt: updatedAt.UnixNano(),
+		CreatedAt: createdAt.Unix(),
+		UpdatedAt: updatedAt.Unix(),
 	}
 
 	err := g.dbmap.Insert(&dbFeed)
@@ -275,7 +275,7 @@ func (g *GroupFetcher) insertComment(comment FBComment) {
 		From:      from,
 		Message:   comment.Message,
 		LikeCount: likeCount,
-		CreatedAt: createdAt.UnixNano(),
+		CreatedAt: createdAt.Unix(),
 	}
 
 	err := g.dbmap.Insert(&dbComment)
