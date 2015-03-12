@@ -73,7 +73,7 @@ type FBComment struct {
 	Id          string `facebook:",required"`
 	FeedId      string
 	From        *FBUser `facebook:",required"`
-	Message     string  `facebook:",required"`
+	Message     string
 	LikeCount   string
 	CreatedTime string
 }
