@@ -53,7 +53,7 @@ const groupId = "258059967652595"
 type FBFeed struct {
 	Id          string  `facebook:",required"`
 	From        *FBUser `facebook:",required"`
-	Message     string  `facebook:",required"`
+	Message     string
 	CreatedTime string
 	UpdatedTime string
 	Comments    []FBComment
@@ -136,7 +136,7 @@ func (g *GroupFetcher) SetDbMap(dbmap *gorp.DbMap) {
 func (g *GroupFetcher) fetch() {
 
 	res, err := g.session.Get("/"+groupId+"/feed", facebook.Params{
-		"limit":  2,
+		"limit":  10,
 		"fields": "id,created_time,updated_time,from,message",
 	})
 
@@ -146,7 +146,7 @@ func (g *GroupFetcher) fetch() {
 	paging, _ := res.Paging(g.session)
 	noMore := false
 
-	for count := 1; !noMore && count < 5; count++ {
+	for !noMore {
 		var feeds FBFeeds
 		err = paging.Decode(&feeds)
 		checkErr(err, fmt.Sprintf("fail to decode feeds. [err:%v]\n", err))
