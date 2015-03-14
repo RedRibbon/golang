@@ -92,7 +92,7 @@ type FBLikes struct {
 type Feed struct {
 	Id        string `db:"id"`
 	From      int64  `db:"from"`
-	Message   string `db:"messge"`
+	Message   string `db:"message"`
 	CreatedAt int64  `db:"created_at"`
 	UpdatedAt int64  `db:"updated_at"`
 }
